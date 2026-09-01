@@ -15,7 +15,8 @@ struct WebView: UIViewRepresentable {
         let webView = WKWebView()
 
         if let url = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "Website") {
-            webView.loadFileURL(url, allowingReadAccessTo: Bundle.main)
+            let accessURL = url.deletingLastPathComponent()
+            webView.loadFileURL(url, allowingReadAccessTo: accessURL)
         }
 
         return webView

@@ -1,0 +1,16 @@
+name: GlassStudio
+options:
+  deploymentTarget:
+    iOS: "15.0"
+targets:
+  GlassStudio:
+    type: application
+    platform: iOS
+    sources:
+      - GlassStudio
+    resources:
+      - Website
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: anar.neo.glassstudio
+      INFOPLIST_KEY_CFBundleDisplayName: Glass Studio
+      INFOPLIST_KEY_CFBundleName: GlassStudio

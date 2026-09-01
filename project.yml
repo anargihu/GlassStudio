@@ -1,7 +1,9 @@
 name: GlassStudio
+
 options:
   deploymentTarget:
     iOS: "15.0"
+
 targets:
   GlassStudio:
     type: application
@@ -10,7 +12,9 @@ targets:
       - GlassStudio
     resources:
       - Website
+    info:
+      path: Info.plist
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: anar.neo.glassstudio
-      INFOPLIST_KEY_CFBundleDisplayName: Glass Studio
-      INFOPLIST_KEY_CFBundleName: GlassStudio
+      INFOPLIST_FILE: Info.plist
+      SWIFT_VERSION: "5.0"

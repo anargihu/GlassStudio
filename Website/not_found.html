@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Studio │ Page Not Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .notfound-wrap {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+  }
+  .notfound-card {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border-radius: 28px;
+    padding: 48px 36px;
+    max-width: 420px;
+    box-shadow: 0 30px 100px rgba(0,0,0,.4);
+  }
+  .notfound-code {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 4rem;
+    line-height: 1;
+    margin: 0 0 12px;
+    background: linear-gradient(135deg, #a78bfa, #4fd1c5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .notfound-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0 0 10px;
+  }
+  .notfound-sub {
+    color: rgba(255,255,255,.55);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 28px;
+  }
+  .notfound-home {
+    display: inline-block;
+    background: rgba(167,139,250,.18);
+    border: 1px solid rgba(167,139,250,.4);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    padding: 12px 28px;
+    border-radius: 14px;
+    text-decoration: none;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .notfound-home:hover {
+    transform: translateY(-2px);
+    background: rgba(167,139,250,.28);
+  }
+</style>
+</head>
+<body>
+
+<div class="glow" id="glowA"></div>
+<div class="glow" id="glowB"></div>
+<div class="glow" id="glowC"></div>
+
+<div class="notfound-wrap">
+  <div class="notfound-card">
+    <div class="notfound-code">404</div>
+    <h1 class="notfound-title">This page isn't here.</h1>
+    <p class="notfound-sub">The page you're looking for doesn't exist or may have moved. Let's get you back to the editor.</p>
+    <a class="notfound-home" href="/">Back to Glass Studio</a>
+  </div>
+</div>
+
+</body>
+</html>

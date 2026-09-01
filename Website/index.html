@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Studio</title>
+<meta name="description" content="Interactive glassmorphism CSS generator. Tune blur, opacity, gradients, and more, then copy the CSS or HTML+CSS instantly.">
+<meta name="theme-color" content="#07080d">
+<meta property="og:title" content="Glass Studio">
+<meta property="og:description" content="Interactive glassmorphism CSS generator. Tune blur, opacity, gradients, and more, then copy the CSS instantly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://panelstudio.neocities.org/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Glass Studio">
+<meta name="twitter:description" content="Interactive glassmorphism CSS generator.">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="glow" id="glowA"></div>
+<div class="glow" id="glowB"></div>
+<div class="glow" id="glowC"></div>
+
+<div class="wrap">
+  <header>
+    <div class="brand">✨ Glass Studio</div>
+    <div class="phase-tag">Phase 1 · standalone editor</div>
+  </header>
+  <h1>Tune it live.<br><span>Copy the CSS.</span></h1>
+  <p class="sub">The background behind these controls is the actual preview surface — drag anything and watch the glass respond in real time.</p>
+
+  <div class="grid">
+    <div>
+      <div class="mode-switch">
+        <button class="mode-btn active" data-mode="card">Card</button>
+        <button class="mode-btn" data-mode="button">Button</button>
+        <button class="mode-btn" data-mode="input">Input</button>
+        <button class="mode-btn" data-mode="navbar">Navbar</button>
+        <button class="mode-btn" data-mode="panel">Panel</button>
+        <button class="mode-btn all-btn" data-mode="all">All</button>
+      </div>
+
+      <div class="panel" id="controlsPanel">
+        <div class="control">
+          <div class="control-top"><span class="l">Blur</span><span class="v" id="vBlur">16px</span></div>
+          <input type="range" id="blur" min="0" max="30" value="16">
+        </div>
+        <div class="control">
+          <div class="control-top"><span class="l">Saturation</span><span class="v" id="vSaturation">140%</span></div>
+          <input type="range" id="saturation" min="100" max="220" value="140">
+        </div>
+        <div class="control">
+          <div class="control-top"><span class="l">Fill opacity</span><span class="v" id="vOpacity">14%</span></div>
+          <input type="range" id="opacity" min="2" max="45" value="14">
+        </div>
+        <div class="control">
+          <div class="control-top"><span class="l">Border width</span><span class="v" id="vBorderWidth">1px</span></div>
+          <input type="range" id="borderWidth" min="0" max="4" value="1">
+        </div>
+        <div class="control">
+          <div class="control-top"><span class="l">Border opacity</span><span class="v" id="vBorder">22%</span></div>
+          <input type="range" id="borderOpacity" min="0" max="60" value="22">
+        </div>
+        <div class="control">
+          <div class="control-top"><span class="l">Border style</span></div>
+          <select id="borderStyle">
+            <option value="solid">Solid</option>
+            <option value="dashed">Dashed</option>
+            <option value="dotted">Dotted</option>
+          </select>
+        </div>
+        <div class="control">
+          <div class="control-top"><span class="l">Radius</span><span class="v" id="vRadius">20px</span></div>
+          <input type="range" id="radius" min="0" max="40" value="20">
+        </div>
+        <div class="control">
+          <div class="control-top"><span class="l">Shadow</span><span class="v" id="vShadow">28</span></div>
+          <input type="range" id="shadow" min="0" max="60" value="28">
+        </div>
+        <div class="control" id="hoverIntensityRow" style="display:none;">
+          <div class="control-top"><span class="l">Hover intensity</span><span class="v" id="vHoverIntensity">6</span></div>
+          <input type="range" id="hoverIntensity" min="0" max="20" value="6">
+        </div>
+
+        <div class="check-row">
+          <input type="checkbox" id="insetShadow">
+          <label for="insetShadow">Inset shadow</label>
+        </div>
+        <div class="check-row">
+          <input type="checkbox" id="noise">
+          <label for="noise">Noise texture</label>
+        </div>
+        <div class="check-row">
+          <input type="checkbox" id="gradientEnabled">
+          <label for="gradientEnabled">Gradient tint</label>
+        </div>
+
+        <div class="control">
+          <span class="l" style="display:block; margin-bottom:8px;">Glass tint</span>
+          <div class="color-row">
+            <input type="color" id="tint" value="#ffffff">
+            <span class="color-hex" id="vTint">#ffffff</span>
+          </div>
+        </div>
+        <div class="control" id="tint2Row" style="display:none;">
+          <span class="l" style="display:block; margin-bottom:8px;">Gradient tint 2</span>
+          <div class="color-row">
+            <input type="color" id="tint2" value="#a78bfa">
+          </div>
+        </div>
+        <div class="control">
+          <span class="l" style="display:block; margin-bottom:8px;">Text color</span>
+          <div class="color-row">
+            <input type="color" id="textColor" value="#ffffff">
+            <span class="color-hex" id="vTextColor">#ffffff</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="toolsPanel">
+        <span class="panel-label">Presets</span>
+        <div class="preset-row">
+          <button class="preset-btn" data-preset="frosted">Frosted</button>
+          <button class="preset-btn" data-preset="neon">Neon</button>
+          <button class="preset-btn" data-preset="subtle">Subtle</button>
+          <button class="preset-btn" data-preset="heavy">Heavy</button>
+        </div>
+        <button class="tool-btn" id="randomizeBtn">🎲 Randomize</button>
+        <button class="tool-btn secondary" id="previewToggleBtn">Preview: Dark</button>
+      </div>
+
+      <div class="panel" id="allNote" style="display:none;">
+        <span class="panel-label">All components</span>
+        <p class="all-note-text">Showing every component with its own saved settings. Pick a component tab above to tune it — each one is saved automatically as you switch.</p>
+      </div>
+
+      <div class="panel">
+        <span class="panel-label">Background glow</span>
+        <div class="glow-colors">
+          <input type="color" id="colA" value="#7c6fff">
+          <input type="color" id="colB" value="#4fd1c5">
+          <input type="color" id="colC" value="#ff6fa5">
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="preview-box">
+        <div id="glassCard">
+          <div class="dot"></div>
+          <h3>Frosted panel</h3>
+          <p>Every slider on the left writes directly to the CSS below — this card is rendered with exactly that code.</p>
+        </div>
+        <button id="glassButton" style="display:none;">Get started</button>
+        <input id="glassInput" style="display:none;" type="text" placeholder="Type something...">
+        <div id="glassNavbar" style="display:none;">
+          <div class="nav-brand"><div class="nav-dot"></div>Studio</div>
+          <div class="nav-links"><span>Home</span><span>Explore</span><span>Profile</span></div>
+        </div>
+        <div id="glassPanel" style="display:none;"><span>Full-width section background — use this behind a hero, modal, or content block.</span></div>
+
+        <div id="allPreview" style="display:none;">
+          <div id="allCard">
+            <div class="dot"></div>
+            <h3>Frosted panel</h3>
+            <p>Every slider on the left writes directly to the CSS below.</p>
+          </div>
+          <button id="allButton">Get started</button>
+          <input id="allInput" type="text" placeholder="Type something...">
+          <div id="allNavbar">
+            <div class="nav-brand"><div class="nav-dot"></div>Studio</div>
+            <div class="nav-links"><span>Home</span><span>Explore</span><span>Profile</span></div>
+          </div>
+          <div id="allPanel"><span>Full-width section background — use this behind a hero, modal, or content block.</span></div>
+        </div>
+      </div>
+
+      <div class="code-box">
+        <div class="code-head">
+          <span>CSS</span>
+          <div>
+            <button id="copyBtn">Copy CSS</button>
+            <button id="copyHtmlBtn">Copy HTML+CSS</button>
+          </div>
+        </div>
+        <pre id="cssOutput"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

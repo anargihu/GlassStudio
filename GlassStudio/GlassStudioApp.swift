@@ -13,9 +13,11 @@ struct GlassStudioApp: App {
 struct WebView: UIViewRepresentable {
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
-        if let url = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: nil) {
+
+        if let url = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "Website") {
             webView.loadFileURL(url, allowingReadAccessTo: Bundle.main)
         }
+
         return webView
     }
 

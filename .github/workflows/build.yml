@@ -10,10 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create project
-        run: |
-          brew install xcodegen
-          xcodegen generate
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
 
       - name: Build
         run: |
@@ -33,8 +34,10 @@ jobs:
 
       - name: Package IPA
         run: |
+          APP_PATH=$(find . -name "GlassStudio.app" -type d | head -1)
+          echo "Found app: $APP_PATH"
           mkdir -p Payload
-          cp -R build/GlassStudio.app Payload/
+          cp -R "$APP_PATH" Payload/GlassStudio.app
           zip -r GlassStudio.ipa Payload
 
       - name: Upload IPA

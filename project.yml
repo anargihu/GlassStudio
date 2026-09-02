@@ -11,12 +11,8 @@ targets:
     sources:
       - GlassStudio
     resources:
-      - Website/index.html
-      - Website/style.css
-      - Website/script.js
-      - Website/logo.png
-      - Website/favicon.ico
-      - Website/not_found.html
+      - path: Website
+        type: folder
     info:
       path: Info.plist
     settings:

@@ -10,6 +10,7 @@ targets:
     platform: iOS
     sources:
       - GlassStudio
+
     resources:
   - Website/index.html
   - Website/style.css

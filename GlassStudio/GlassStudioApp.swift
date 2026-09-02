@@ -15,10 +15,11 @@ struct WebView: UIViewRepresentable {
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView(frame: .zero)
 
-        if let url = Bundle.main.url(forResource: "index", withExtension: "html") {
-            webView.loadFileURL(url, allowingReadAccessTo: Bundle.main.resourceURL!)
+        if let url = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "Website"),
+           let websiteURL = Bundle.main.url(forResource: "Website", withExtension: nil) {
+            webView.loadFileURL(url, allowingReadAccessTo: websiteURL)
         } else {
-            webView.loadHTMLString("<h1>index.html not found</h1>", baseURL: nil)
+            webView.loadHTMLString("<h1>Website files not found</h1>", baseURL: nil)
         }
 
         return webView

@@ -10,7 +10,7 @@ targets:
     platform: iOS
     sources:
       - GlassStudio
-        resources:
+    resources:
       - path: Website/index.html
       - path: Website/style.css
       - path: Website/script.js

@@ -33,6 +33,11 @@ jobs:
           grep -i "error:" build.log | tail -30 || true
           exit $status
 
+      - name: Inspect app bundle
+        run: |
+          echo "===== APP CONTENTS ====="
+          find build/Build/Products/Release-iphoneos/GlassStudio.app -maxdepth 4 -type f | sort
+
       - name: Package IPA
         run: |
           mkdir -p Payload

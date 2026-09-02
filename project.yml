@@ -11,14 +11,14 @@ targets:
     sources:
       - GlassStudio
 
-    resources:
-  - Website/index.html
-  - Website/style.css
-  - Website/script.js
-  - Website/logo.png
-  - Website/favicon.ico
-  - Website/not_found.html
-  - Website/robots.txt
+        resources:
+      - path: Website/index.html
+      - path: Website/style.css
+      - path: Website/script.js
+      - path: Website/logo.png
+      - path: Website/favicon.ico
+      - path: Website/not_found.html
+      - path: Website/robots.txt
 
     info:
       path: Info.plist

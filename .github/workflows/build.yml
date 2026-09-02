@@ -33,10 +33,19 @@ jobs:
           grep -i "error:" build.log | tail -30 || true
           exit $status
 
-      - name: Inspect app bundle
+      - name: Inspect before copy
         run: |
-          echo "===== APP CONTENTS ====="
-          find build/Build/Products/Release-iphoneos/GlassStudio.app -maxdepth 4 -type f | sort
+          echo "===== BEFORE COPY ====="
+          find build/Build/Products/Release-iphoneos/GlassStudio.app -maxdepth 4 -print | sort
+
+      - name: Copy website into app
+        run: |
+          cp -R Website build/Build/Products/Release-iphoneos/GlassStudio.app/
+
+      - name: Inspect after copy
+        run: |
+          echo "===== AFTER COPY ====="
+          find build/Build/Products/Release-iphoneos/GlassStudio.app -maxdepth 4 -print | sort
 
       - name: Package IPA
         run: |

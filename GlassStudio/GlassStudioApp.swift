@@ -17,6 +17,8 @@ struct WebView: UIViewRepresentable {
 
         if let url = Bundle.main.url(forResource: "index", withExtension: "html") {
             webView.loadFileURL(url, allowingReadAccessTo: Bundle.main.resourceURL!)
+        } else {
+            webView.loadHTMLString("<h1>index.html not found</h1>", baseURL: nil)
         }
 
         return webView

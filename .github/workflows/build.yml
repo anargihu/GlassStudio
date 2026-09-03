@@ -10,6 +10,59 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create App Icon
+        run: |
+          mkdir -p GlassStudio/Assets.xcassets/AppIcon.appiconset
+
+          sips -z 180 180 Website/logo.png --out GlassStudio/Assets.xcassets/AppIcon.appiconset/icon-60@3x.png
+          sips -z 120 120 Website/logo.png --out GlassStudio/Assets.xcassets/AppIcon.appiconset/icon-60@2x.png
+          sips -z 167 167 Website/logo.png --out GlassStudio/Assets.xcassets/AppIcon.appiconset/icon-83.5@2x.png
+          sips -z 1024 1024 Website/logo.png --out GlassStudio/Assets.xcassets/AppIcon.appiconset/icon-1024.png
+
+          cat > GlassStudio/Assets.xcassets/Contents.json <<'EOF'
+          {
+            "info": {
+              "author": "xcode",
+              "version": 1
+            }
+          }
+          EOF
+
+          cat > GlassStudio/Assets.xcassets/AppIcon.appiconset/Contents.json <<'EOF'
+          {
+            "images": [
+              {
+                "filename": "icon-60@2x.png",
+                "idiom": "iphone",
+                "scale": "2x",
+                "size": "60x60"
+              },
+              {
+                "filename": "icon-60@3x.png",
+                "idiom": "iphone",
+                "scale": "3x",
+                "size": "60x60"
+              },
+              {
+                "filename": "icon-83.5@2x.png",
+                "idiom": "iphone",
+                "scale": "2x",
+                "size": "83.5x83.5"
+              },
+              {
+                "filename": "icon-1024.png",
+                "idiom": "ios-marketing",
+                "scale": "1x",
+                "size": "1024x1024"
+              }
+            ],
+            "info": {
+              "author": "xcode",
+              "version": 1
+            }
+          }
+          EOF
+
       - name: Install XcodeGen
         run: brew install xcodegen
 
@@ -33,19 +86,9 @@ jobs:
           grep -i "error:" build.log | tail -30 || true
           exit $status
 
-      - name: Inspect before copy
-        run: |
-          echo "===== BEFORE COPY ====="
-          find build/Build/Products/Release-iphoneos/GlassStudio.app -maxdepth 4 -print | sort
-
       - name: Copy website into app
         run: |
           cp -R Website build/Build/Products/Release-iphoneos/GlassStudio.app/
-
-      - name: Inspect after copy
-        run: |
-          echo "===== AFTER COPY ====="
-          find build/Build/Products/Release-iphoneos/GlassStudio.app -maxdepth 4 -print | sort
 
       - name: Package IPA
         run: |
